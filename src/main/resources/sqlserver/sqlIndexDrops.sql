@@ -4,7 +4,14 @@ alter table benchmarksql.warehouse drop constraint pk_warehouse;
 
 alter table benchmarksql.district drop constraint pk_district;
 
+drop index if exists benchmarksql.district.idx_district_d_id;
+drop index if exists benchmarksql.district.idx_district_d_w_id;
+
 alter table benchmarksql.customer drop constraint pk_customer;
+
+drop index if exists benchmarksql.customer.idx_customer_c_w_id;
+drop index if exists benchmarksql.customer.idx_customer_c_d_id;
+drop index if exists benchmarksql.customer.idx_customer_c_id;
 
 -- drop index ndx_customer_name;
 

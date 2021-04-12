@@ -15,7 +15,7 @@
 		<Root level="trace">
 			<AppenderRef ref="Console" />
 		</Root>
-		<Logger name="com.github.benchmarksql.jtpcc" level="trace"
+		<Logger name="com.github.benchmarksql.jtpcc" level="info"
 			additivity="false">
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="BenchmarkLog" />

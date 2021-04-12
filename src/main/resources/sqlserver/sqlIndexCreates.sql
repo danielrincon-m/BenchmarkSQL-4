@@ -6,8 +6,14 @@ alter table benchmarksql.warehouse add constraint pk_warehouse
 alter table benchmarksql.district add constraint pk_district 
   primary key (d_w_id, d_id);
 
+-- create nonclustered index idx_district_d_id on benchmarksql.district (d_id);
+-- create nonclustered index idx_district_d_w_id on benchmarksql.district (d_w_id);
+
 alter table benchmarksql.customer add constraint pk_customer 
   primary key (c_w_id, c_d_id, c_id);
+-- create nonclustered index idx_customer_c_w_id on benchmarksql.customer (c_w_id);
+-- create nonclustered index idx_customer_c_d_id on benchmarksql.customer (c_d_id);
+-- create nonclustered index idx_customer_c_id on benchmarksql.customer (c_id);
 
 alter table benchmarksql.history add constraint pk_history 
   primary key (hist_id);
