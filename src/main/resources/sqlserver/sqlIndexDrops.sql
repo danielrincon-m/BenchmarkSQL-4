@@ -30,6 +30,7 @@ drop index if exists benchmarksql.new_order.idx_new_order_no_d_id;
 drop index if exists benchmarksql.new_order.idx_new_order_no_o_id;
 
 alter table benchmarksql.order_line drop constraint pk_order_line;
+ALTER TABLE benchmarksql.order_line SET(LOCK_ESCALATION=ENABLE)
 drop index if exists benchmarksql.order_line.idx_order_line_ol_w_id;
 drop index if exists benchmarksql.order_line.idx_order_line_ol_d_id;
 drop index if exists benchmarksql.order_line.idx_order_line_ol_o_id;
