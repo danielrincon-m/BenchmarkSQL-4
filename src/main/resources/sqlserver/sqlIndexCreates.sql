@@ -2,6 +2,7 @@
 
 alter table benchmarksql.warehouse add constraint pk_warehouse 
   primary key (w_id);  
+-- create nonclustered index idx_warehouse_w_id on benchmarksql.warehouse (w_id);
 
 alter table benchmarksql.district add constraint pk_district 
   primary key (d_w_id, d_id);
@@ -10,9 +11,9 @@ alter table benchmarksql.district add constraint pk_district
 
 alter table benchmarksql.customer add constraint pk_customer 
   primary key (c_w_id, c_d_id, c_id);
-create nonclustered index idx_customer_c_w_id on benchmarksql.customer (c_w_id);
-create nonclustered index idx_customer_c_d_id on benchmarksql.customer (c_d_id);
-create nonclustered index idx_customer_c_id on benchmarksql.customer (c_id);
+-- create nonclustered index idx_customer_c_w_id on benchmarksql.customer (c_w_id);
+-- create nonclustered index idx_customer_c_d_id on benchmarksql.customer (c_d_id);
+-- create nonclustered index idx_customer_c_id on benchmarksql.customer (c_id);
 
 alter table benchmarksql.history add constraint pk_history 
   primary key (hist_id);
@@ -37,7 +38,7 @@ alter table benchmarksql.new_order add constraint pk_new_order
 
 alter table benchmarksql.order_line add constraint pk_order_line 
   primary key (ol_w_id, ol_d_id, ol_o_id, ol_number);
-ALTER TABLE benchmarksql.order_line SET(LOCK_ESCALATION=DISABLE)
+-- ALTER TABLE benchmarksql.order_line SET(LOCK_ESCALATION=DISABLE)
 -- create nonclustered index idx_order_line_ol_w_id on benchmarksql.order_line (ol_w_id);
 -- create nonclustered index idx_order_line_ol_d_id on benchmarksql.order_line (ol_d_id);
 -- create nonclustered index idx_order_line_ol_o_id on benchmarksql.order_line (ol_o_id);

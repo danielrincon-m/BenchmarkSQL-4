@@ -1,0 +1,18 @@
+docker pull mcr.microsoft.com/mssql/server
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=PauyDani1' -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
+docker exec -it 5c /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P PauyDani1
+
+CREATE DATABASE benchmarksqldb;
+CREATE LOGIN benchmarksql WITH PASSWORD = 'PauyDani1';
+CREATE USER benchmarksql FOR LOGIN benchmarksql;
+USE benchmarksqldb;
+GRANT CONTROL ON DATABASE::benchmarksqldb TO benchmarksql;
+GO
+
+./runSQL sqlserver/sqlserver.properties sqlserver/sqlTableCreates.sql
+./runLoader sqlserver/sqlserver.properties numwarehouses XXX
+./runSQL sqlserver/sqlserver.properties sqlserver/sqlIndexCreates.sql
+./runBenchmark sqlserver/sqlserver.properties
+./runSQL sqlserver/sqlserver.properties sqlserver/sqlTableTruncates.sql
+./runSQL sqlserver/sqlserver.properties sqlserver/sqlIndexDrops.sql
+./runSQL sqlserver/sqlserver.properties sqlserver/sqlTableDrops.sql

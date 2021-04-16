@@ -1,48 +1,16 @@
--- Deletes the Schema if exists
+-- ALTER DATABASE benchmarksqldb
+-- SET MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
 
-DECLARE @SQL        NVARCHAR(2000)
-DECLARE @SchemaName NVARCHAR(100)
-DECLARE @Counter    INT
-DECLARE @TotalRows  INT
+-- USE benchmarksqldb;
+-- SET TRANSACTION ISOLATION LEVEL ;
+-- GO
 
-SET @SchemaName = 'benchmarksql'
-SET @Counter = 1
+-- ALTER DATABASE benchmarksqldb 
+-- ADD FILE (name='benchmarksqldb_mod1', 
+-- filename='./benchmarksqldb_mod1') 
+-- TO FILEGROUP benchmarksqldb;
 
-SET @SQL='
-SELECT ''DROP TABLE '' + S.[Name] + ''.'' + O.[Name] AS DropTableStatement
-FROM SYS.OBJECTS AS O INNER JOIN SYS.SCHEMAS AS S ON O.[schema_id] = S.[schema_id]
-WHERE O.TYPE = ''U'' AND S.[Name] = ''' + @SchemaName + ''''
-
-DROP TABLE IF EXISTS #DropStatements
-
-CREATE TABLE #DropStatements
-(
-    ID                  INT IDENTITY (1, 1),
-    DropTableStatement  VARCHAR(2000)
-)
-
-INSERT INTO #DropStatements
-EXEC (@SQL)
-
-SELECT @TotalRows = COUNT(ID) FROM #DropStatements
-
-WHILE @Counter <= @TotalRows
-BEGIN
-    SELECT @SQL = DropTableStatement FROM #DropStatements WHERE ID = @Counter
-
-    PRINT @SQL
-    EXEC (@SQL)
-
-    SET @Counter = @Counter + 1
-END
-
-SET @SQL = N'DROP SCHEMA IF EXISTS ' + @SchemaName
-PRINT @SQL
-EXEC (@SQL);
-
---Delete sequences
-
-DROP SEQUENCE IF EXISTS hist_id_seq;
+USE benchmarksqldb;
 
 -- creates the Schema
 
@@ -60,7 +28,7 @@ create table benchmarksql.warehouse (
   w_city      varchar(20),
   w_state     char(2),
   w_zip       char(9)
-);
+)
 
 create table benchmarksql.district (
   d_w_id       integer       not null,
@@ -74,7 +42,9 @@ create table benchmarksql.district (
   d_city       varchar(20),
   d_state      char(2),
   d_zip        char(9)
-);
+)
+--   CONSTRAINT pk_district primary key nonclustered (d_w_id, d_id)
+-- )WITH (MEMORY_OPTIMIZED = ON, DURABILITY = SCHEMA_AND_DATA);
 
 create table benchmarksql.customer (
   c_w_id         integer        not null,

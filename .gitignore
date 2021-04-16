@@ -4,4 +4,3 @@ bin/
 .settings
 .DS_Store
 /target/
-commands.txt
