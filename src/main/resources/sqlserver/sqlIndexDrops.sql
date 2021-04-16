@@ -1,6 +1,7 @@
 -- Remove primary keys and indexes.
 
 alter table benchmarksql.warehouse drop constraint pk_warehouse;
+drop index if exists benchmarksql.warehouse.idx_warehouse_w_id;
 
 alter table benchmarksql.district drop constraint pk_district;
 
