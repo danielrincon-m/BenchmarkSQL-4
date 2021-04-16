@@ -40,6 +40,7 @@ drop index if exists benchmarksql.order_line.idx_order_line_ol_o_id;
 drop index if exists benchmarksql.order_line.idx_order_line_ol_number;
 
 alter table benchmarksql.stock drop constraint pk_stock;
+drop index if exists benchmarksql.stock.idx_stock_s_id;
 drop index if exists benchmarksql.stock.idx_stock_s_quantity;
 drop index if exists benchmarksql.stock.idx_stock_s_w_id;
 drop index if exists benchmarksql.stock.idx_stock_s_i_id;
