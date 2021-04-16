@@ -9,6 +9,8 @@ drop index if exists benchmarksql.district.idx_district_d_w_id;
 
 alter table benchmarksql.customer drop constraint pk_customer;
 
+drop index if exists benchmarksql.customer.idx_customer_c_last;
+drop index if exists benchmarksql.customer.idx_customer_c_first;
 drop index if exists benchmarksql.customer.idx_customer_c_w_id;
 drop index if exists benchmarksql.customer.idx_customer_c_d_id;
 drop index if exists benchmarksql.customer.idx_customer_c_id;
@@ -30,13 +32,14 @@ drop index if exists benchmarksql.new_order.idx_new_order_no_d_id;
 drop index if exists benchmarksql.new_order.idx_new_order_no_o_id;
 
 alter table benchmarksql.order_line drop constraint pk_order_line;
-ALTER TABLE benchmarksql.order_line SET(LOCK_ESCALATION=ENABLE)
+-- ALTER TABLE benchmarksql.order_line SET(LOCK_ESCALATION=ENABLE)
 drop index if exists benchmarksql.order_line.idx_order_line_ol_w_id;
 drop index if exists benchmarksql.order_line.idx_order_line_ol_d_id;
 drop index if exists benchmarksql.order_line.idx_order_line_ol_o_id;
 drop index if exists benchmarksql.order_line.idx_order_line_ol_number;
 
 alter table benchmarksql.stock drop constraint pk_stock;
+drop index if exists benchmarksql.stock.idx_stock_s_quantity;
 drop index if exists benchmarksql.stock.idx_stock_s_w_id;
 drop index if exists benchmarksql.stock.idx_stock_s_i_id;
 
