@@ -41,7 +41,7 @@ alter table benchmarksql.new_order add constraint pk_new_order
 -- create nonclustered index idx_new_order_no_o_id on benchmarksql.new_order (no_o_id);
 
 alter table benchmarksql.order_line add constraint pk_order_line 
-  primary key (ol_w_id, ol_d_id, ol_o_id, ol_number);
+  primary key (ol_w_id, ol_d_id, ol_o_id);
 -- ALTER TABLE benchmarksql.order_line SET(LOCK_ESCALATION=DISABLE)
 -- create nonclustered index idx_order_line_ol_w_id on benchmarksql.order_line (ol_w_id);
 -- create nonclustered index idx_order_line_ol_d_id on benchmarksql.order_line (ol_d_id);
