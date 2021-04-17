@@ -121,7 +121,7 @@ create table benchmarksql.order_line (
 create table benchmarksql.stock (
   s_w_id       integer       not null,
   s_i_id       integer       not null,
-  s_quantity   decimal(4,0),
+  s_quantity   decimal(4,0)  not null,
   s_ytd        decimal(8,2),
   s_order_cnt  integer,
   s_remote_cnt integer,
