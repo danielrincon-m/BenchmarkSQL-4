@@ -11,7 +11,7 @@ alter table benchmarksql.district add constraint pk_district
 
 alter table benchmarksql.customer add constraint pk_customer 
   primary key (c_w_id, c_d_id, c_id);
-create nonclustered index idx_customer_c_last on benchmarksql.customer (c_last, c_first);
+--create nonclustered index idx_customer_c_last on benchmarksql.customer (c_last, c_first);
 -- create nonclustered index idx_customer_c_last on benchmarksql.customer (c_last);
 -- create nonclustered index idx_customer_c_first on benchmarksql.customer (c_first);
 -- create nonclustered index idx_customer_c_w_id on benchmarksql.customer (c_w_id);
@@ -50,7 +50,7 @@ alter table benchmarksql.order_line add constraint pk_order_line
 
 alter table benchmarksql.stock add constraint pk_stock
   primary key (s_w_id, s_i_id);
-create nonclustered index idx_stock_s_id on benchmarksql.stock (s_quantity);
+--create nonclustered index idx_stock_s_id on benchmarksql.stock (s_quantity);
 -- create nonclustered index idx_stock_s_quantity on benchmarksql.stock (s_quantity);
 -- create nonclustered index idx_stock_s_w_id on benchmarksql.stock (s_w_id);
 -- create nonclustered index idx_stock_s_i_id on benchmarksql.stock (s_i_id);
