@@ -10,8 +10,8 @@ alter table benchmarksql.district add constraint pk_district
 -- create nonclustered index idx_district_d_w_id on benchmarksql.district (d_w_id);
 
 alter table benchmarksql.customer add constraint pk_customer 
-  primary key (c_w_id, c_d_id, c_id);
-create nonclustered index idx_customer_c_last on benchmarksql.customer (c_w_id, c_d_id, c_id, c_last, c_first);
+  primary key (c_w_id, c_d_id, c_id, c_last, c_first);
+--create nonclustered index idx_customer_c_last on benchmarksql.customer (c_w_id, c_d_id, c_id, c_last, c_first);
 -- create nonclustered index idx_customer_c_last on benchmarksql.customer (c_last);
 -- create nonclustered index idx_customer_c_first on benchmarksql.customer (c_first);
 -- create nonclustered index idx_customer_c_w_id on benchmarksql.customer (c_w_id);
@@ -28,8 +28,8 @@ SELECT @max = max(hist_id) + 1 from benchmarksql.history
 exec('ALTER SEQUENCE hist_id_seq RESTART WITH ' + @max);
 
 alter table benchmarksql.oorder add constraint pk_oorder 
-  primary key (o_w_id, o_d_id, o_id);
-create nonclustered index idx_oorder_o_id on benchmarksql.oorder (o_w_id, o_d_id, o_c_id, o_id);
+  primary key (o_w_id, o_d_id, o_c_id, o_id);
+--create nonclustered index idx_oorder_o_id on benchmarksql.oorder (o_w_id, o_d_id, o_c_id, o_id);
 -- create nonclustered index idx_oorder_o_w_id on benchmarksql.oorder (o_w_id);
 -- create nonclustered index idx_oorder_o_d_id on benchmarksql.oorder (o_d_id);
 -- create nonclustered index idx_oorder_o_id on benchmarksql.oorder (o_id);
@@ -49,8 +49,8 @@ alter table benchmarksql.order_line add constraint pk_order_line
 -- create nonclustered index idx_order_line_ol_number on benchmarksql.order_line (ol_number);
 
 alter table benchmarksql.stock add constraint pk_stock
-  primary key (s_w_id, s_i_id);
-create nonclustered index idx_stock_s_id on benchmarksql.stock (s_w_id, s_i_id, s_quantity);
+  primary key (s_w_id, s_i_id, s_quantity);
+--create nonclustered index idx_stock_s_id on benchmarksql.stock (s_w_id, s_i_id, s_quantity);
 -- create nonclustered index idx_stock_s_quantity on benchmarksql.stock (s_quantity);
 -- create nonclustered index idx_stock_s_w_id on benchmarksql.stock (s_w_id);
 -- create nonclustered index idx_stock_s_i_id on benchmarksql.stock (s_i_id);
