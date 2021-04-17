@@ -4,8 +4,8 @@ docker exec -it 5c /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P PauyDani1
 
 CREATE DATABASE benchmarksqldb;
 CREATE LOGIN benchmarksql WITH PASSWORD = 'PauyDani1';
-CREATE USER benchmarksql FOR LOGIN benchmarksql;
 USE benchmarksqldb;
+CREATE USER benchmarksql FOR LOGIN benchmarksql;
 GRANT CONTROL ON DATABASE::benchmarksqldb TO benchmarksql;
 GO
 
