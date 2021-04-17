@@ -49,8 +49,8 @@ alter table benchmarksql.order_line add constraint pk_order_line
 -- create nonclustered index idx_order_line_ol_number on benchmarksql.order_line (ol_number);
 
 alter table benchmarksql.stock add constraint pk_stock
-  primary key (s_w_id, s_i_id);
-create nonclustered index idx_stock_s_id on benchmarksql.stock (s_w_id, s_i_id, s_quantity);
+  primary key (s_w_id, s_i_id, s_quantity);
+--create nonclustered index idx_stock_s_id on benchmarksql.stock (s_w_id, s_i_id, s_quantity);
 -- create nonclustered index idx_stock_s_quantity on benchmarksql.stock (s_quantity);
 -- create nonclustered index idx_stock_s_w_id on benchmarksql.stock (s_w_id);
 -- create nonclustered index idx_stock_s_i_id on benchmarksql.stock (s_i_id);
