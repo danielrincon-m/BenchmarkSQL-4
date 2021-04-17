@@ -89,7 +89,7 @@ create table benchmarksql.oorder (
   o_w_id       integer      not null,
   o_d_id       integer      not null,
   o_id         integer      not null,
-  o_c_id       integer      not null,
+  o_c_id       integer,
   o_carrier_id integer,
   o_ol_cnt     decimal(2,0),
   o_all_local  decimal(1,0),

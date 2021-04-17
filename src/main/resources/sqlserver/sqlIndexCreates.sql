@@ -28,7 +28,7 @@ SELECT @max = max(hist_id) + 1 from benchmarksql.history
 exec('ALTER SEQUENCE hist_id_seq RESTART WITH ' + @max);
 
 alter table benchmarksql.oorder add constraint pk_oorder 
-  primary key (o_w_id, o_d_id, o_c_id, o_id);
+  primary key (o_w_id, o_d_id, o_id);
 -- create nonclustered index idx_oorder_o_id on benchmarksql.oorder (o_w_id, o_d_id, o_c_id, o_id);
 -- create nonclustered index idx_oorder_o_w_id on benchmarksql.oorder (o_w_id);
 -- create nonclustered index idx_oorder_o_d_id on benchmarksql.oorder (o_d_id);
